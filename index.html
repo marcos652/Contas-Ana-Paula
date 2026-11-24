@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR" data-radius="soft">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Controle financeiro pessoal</title>
+<meta name="description" content="Registre o que entra e o que sai, mês a mês. Exporte em PDF e Excel e mantenha tudo salvo na sua conta.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23232323'/%3E%3Crect x='14' y='14' width='36' height='36' rx='8' fill='%23a1ffcb'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#view">Pular para o conteúdo</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V6a2 2 0 0 1 2-2h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h11v3M4 7v10a2 2 0 0 0 2 2h13a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1H6a2 2 0 0 1-2-1zM16 13.5h1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M17 7L7 17M7 8v9h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-checkc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12.5l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M9 3v4M15 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8-9-9zM7.5 8.5h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4M12 17h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor"/><circle cx="10.5" cy="7" r="1.1" fill="currentColor"/><circle cx="15" cy="7.5" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.2A9.6 9.6 0 0 1 12 6c5 0 8.5 4.5 9.5 6-.5.8-1.5 2.1-3 3.3M6.6 7.6C4.5 9 3.1 11 2.5 12c1 1.5 4.5 6 9.5 6 1.5 0 2.8-.4 4-1M9.9 9.9a3 3 0 0 0 4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-grip" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></g></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- Entrada -->
+<main id="login" hidden>
+  <div class="login-card">
+    <div class="brand"><span class="mark" aria-hidden="true"></span><span>Controle financeiro</span></div>
+    <h1>Seu dinheiro do mês, em um só lugar.</h1>
+    <p class="lead">Registre o que entra e o que sai, acompanhe o saldo e exporte em PDF ou Excel quando quiser.</p>
+
+    <button class="btn" id="btn-google" type="button">Entrar com Google</button>
+    <div class="or" id="or-google"><span>ou com e-mail</span></div>
+
+    <form id="form-auth" novalidate>
+      <label class="field"><span>E-mail</span>
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label class="field"><span>Senha</span>
+        <input type="password" name="senha" autocomplete="current-password" minlength="6" required>
+      </label>
+      <p class="form-error" id="auth-error" role="alert" hidden></p>
+      <div class="row">
+        <button class="btn" type="submit" data-mode="entrar">Entrar</button>
+        <button class="btn ghost" type="button" id="btn-criar">Criar conta</button>
+      </div>
+      <button class="link" type="button" id="btn-reset">Esqueci a senha</button>
+    </form>
+
+    <button class="link local" type="button" id="btn-local">Usar sem conta, só neste aparelho</button>
+  </div>
+</main>
+
+<!-- App -->
+<div id="app" hidden>
+  <header class="top">
+    <div class="wrap bar">
+      <div class="brand"><span class="mark" aria-hidden="true"></span><span>Controle financeiro</span></div>
+      <nav class="tabs" role="tablist" aria-label="Seções">
+        <button role="tab" id="tab-resumo" data-tab="resumo" aria-selected="true" aria-controls="view">Início</button>
+        <button role="tab" id="tab-receber" data-tab="receber" aria-selected="false" aria-controls="view">A receber</button>
+        <button role="tab" id="tab-pagar" data-tab="pagar" aria-selected="false" aria-controls="view">A pagar</button>
+        <button role="tab" id="tab-clientes" data-tab="clientes" aria-selected="false" aria-controls="view">Clientes e notas</button>
+      </nav>
+      <div class="who">
+        <span class="status"><i class="dot" aria-hidden="true"></i><span id="status-label">Dados salvos</span></span>
+        <button class="btn ghost sm" id="btn-tema" type="button"><svg class="i"><use href="#i-palette"/></svg><span class="hide-s">Tema</span></button>
+        <span id="who-label" class="muted"></span>
+        <button class="btn ghost sm" id="btn-sessao" type="button">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap page">
+    <div class="crumbs">
+      <span class="crumb"><svg class="i"><use href="#i-home"/></svg><span class="muted">/</span><strong id="crumb-label">Início</strong></span>
+      <div class="tools">
+        <button class="btn ghost" id="btn-copiar" type="button"><svg class="i"><use href="#i-copy"/></svg>Copiar mês anterior</button>
+        <button class="btn" id="btn-exportar" type="button"><svg class="i"><use href="#i-down"/></svg>Exportar</button>
+      </div>
+    </div>
+
+    <div id="banner" class="banner" hidden></div>
+
+    <section class="card overview" aria-label="Período">
+      <div>
+        <div class="ov-title">Visão geral</div>
+        <div class="muted small" id="mes-sub"></div>
+      </div>
+      <div class="ov-right">
+        <div class="month" role="group" aria-label="Mês">
+          <button class="icon-btn" id="mes-prev" type="button" aria-label="Mês anterior"><svg class="i"><use href="#i-left"/></svg></button>
+          <label class="datebox"><svg class="i"><use href="#i-cal"/></svg><span id="mes-label">Mês</span>
+            <input type="month" id="mes-input" aria-label="Escolher mês">
+          </label>
+          <button class="icon-btn" id="mes-next" type="button" aria-label="Próximo mês"><svg class="i"><use href="#i-right"/></svg></button>
+        </div>
+        <button class="btn ghost sm" id="mes-hoje" type="button">Este mês</button>
+      </div>
+    </section>
+
+    <section id="view" tabindex="-1" aria-live="polite"></section>
+  </div>
+</div>
+
+<!-- Gerenciar colunas -->
+<dialog id="dlg-cols">
+  <form method="dialog" class="dlg">
+    <h2 id="dlg-cols-titulo">Colunas</h2>
+    <ul class="col-list" id="col-list"></ul>
+    <div class="dlg-actions">
+      <button class="btn ghost" type="button" id="btn-nova-coluna"><svg class="i"><use href="#i-plus"/></svg>Nova coluna</button>
+      <button class="btn" value="fechar">Fechar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Editar coluna -->
+<dialog id="dlg-col">
+  <form class="dlg" id="form-col" method="dialog">
+    <h2 id="dlg-col-titulo">Nova coluna</h2>
+    <label class="field"><span>Nome</span><input type="text" id="col-nome" maxlength="40" required></label>
+    <label class="field"><span>Tipo</span>
+      <select id="col-tipo">
+        <option value="texto">Texto</option>
+        <option value="numero">Número</option>
+        <option value="moeda">Valor em R$</option>
+        <option value="data">Data</option>
+      </select>
+    </label>
+    <p class="muted small" id="col-aviso" hidden>Esta coluna é usada nos totais. Você pode renomear, mas não excluir.</p>
+    <div class="dlg-move" id="col-mover" hidden>
+      <button class="btn ghost sm" type="button" id="col-esq"><svg class="i"><use href="#i-left"/></svg>Mover para a esquerda</button>
+      <button class="btn ghost sm" type="button" id="col-dir">Mover para a direita<svg class="i"><use href="#i-right"/></svg></button>
+    </div>
+    <div class="dlg-actions">
+      <button class="btn danger" type="button" id="col-excluir" hidden>Excluir coluna</button>
+      <span class="grow"></span>
+      <button class="btn ghost" type="button" id="col-cancelar">Cancelar</button>
+      <button class="btn" type="submit" id="col-salvar">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Exportar -->
+<dialog id="dlg-export">
+  <form class="dlg" method="dialog">
+    <h2>Exportar</h2>
+    <fieldset class="scope">
+      <legend>O que incluir</legend>
+      <label><input type="radio" name="escopo" value="mes" checked> <span id="exp-mes">Este mês</span></label>
+      <label><input type="radio" name="escopo" value="todos"> <span>Todos os meses</span></label>
+    </fieldset>
+    <p class="muted small" id="exp-status" role="status"></p>
+    <div class="dlg-actions">
+      <button class="btn ghost" type="button" id="exp-fechar">Fechar</button>
+      <span class="grow"></span>
+      <button class="btn" type="button" id="exp-pdf">Baixar PDF</button>
+      <button class="btn" type="button" id="exp-xlsx">Baixar Excel</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Tema -->
+<dialog id="dlg-tema">
+  <form method="dialog" class="dlg">
+    <h2>Personalizar tema</h2>
+    <fieldset class="opt"><legend>Aparência</legend>
+      <div class="seg3" id="g-modo">
+        <label><input type="radio" name="modo" value="claro"><span>Claro</span></label>
+        <label><input type="radio" name="modo" value="escuro"><span>Escuro</span></label>
+        <label><input type="radio" name="modo" value="auto"><span>Automático</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="opt"><legend>Cor de destaque</legend>
+      <div class="swatches" id="swatches"></div>
+      <label class="custom-color"><span>Outra cor</span><input type="color" id="cor-custom" aria-label="Escolher outra cor"></label>
+    </fieldset>
+    <fieldset class="opt"><legend>Espaçamento</legend>
+      <div class="seg3" id="g-densidade">
+        <label><input type="radio" name="densidade" value="normal"><span>Confortável</span></label>
+        <label><input type="radio" name="densidade" value="compacto"><span>Compacto</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="opt"><legend>Cantos</legend>
+      <div class="seg3" id="g-cantos">
+        <label><input type="radio" name="cantos" value="reto"><span>Retos</span></label>
+        <label><input type="radio" name="cantos" value="suave"><span>Suaves</span></label>
+        <label><input type="radio" name="cantos" value="redondo"><span>Redondos</span></label>
+      </div>
+    </fieldset>
+    <div class="dlg-actions">
+      <button class="btn ghost" type="button" id="tema-reset"><svg class="i"><use href="#i-reset"/></svg>Restaurar padrão</button>
+      <span class="grow"></span>
+      <button class="btn" value="ok">Pronto</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-geral"><div class="dlg" id="geral-body"></div></dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
